@@ -17,7 +17,8 @@
     "coveralls": "cat ./coverage/ng-select/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "ng lint ng-select",
     "postpublish": "cp -r dist/ng-select/package.json src/ng-select",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "packagr": "ng-packagr -p src/ng-select/ng-package.json"
   },
   "release": {
     "branch": "master",

@@ -112,6 +112,9 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
     @Input() minTermLength = 0;
     @Input() editableSearchTerm = false;
     @Input() keyDownFn = (_: KeyboardEvent) => true;
+    @Input() validationSuccess = false;
+    @Input() validationFailed = false;
+    @Input() validationAbsent = false;
 
     @Input() @HostBinding('class.ng-select-typeahead') typeahead: Subject<string>;
     @Input() @HostBinding('class.ng-select-multiple') multiple = false;
@@ -119,6 +122,7 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
     @Input() @HostBinding('class.ng-select-searchable') searchable = true;
     @Input() @HostBinding('class.ng-select-clearable') clearable = true;
     @Input() @HostBinding('class.ng-select-opened') isOpen = false;
+    
 
     @Input()
     get items() { return this._items };
@@ -616,6 +620,14 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
         if (!(<any>this._cd).destroyed) {
             this._cd.detectChanges();
         }
+    }
+
+    getClasses() {
+        return {
+            'validation-success': this.validationSuccess,
+            'validation-failed': this.validationFailed,
+            'validation-absent': this.validationAbsent,
+        };
     }
 
     private _setSearchTermFromItems() {

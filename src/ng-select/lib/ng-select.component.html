@@ -2,7 +2,8 @@
     (mousedown)="handleMousedown($event)"
     [class.ng-appearance-outline]="appearance === 'outline'"
     [class.ng-has-value]="hasValue"
-    class="ng-select-container">
+    class="ng-select-container"
+    [ngClass]="getClasses()">
 
     <div class="ng-value-container">
         <div class="ng-placeholder">{{placeholder}}</div>
